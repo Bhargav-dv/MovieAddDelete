@@ -22,9 +22,12 @@ const updateUi = () =>{
 
 const deletePermanet = (movieId1) =>{
     deleteConfim.classList.add("visible");
-    const deleteYesBtn = document.querySelector("#delete-modal .btn--danger")
+    let deleteYesBtn = document.querySelector("#delete-modal .btn--danger")   
+    deleteYesBtn.replaceWith(deleteYesBtn.cloneNode(true));
+    deleteYesBtn = document.querySelector("#delete-modal .btn--danger")
     deleteYesBtn.addEventListener("click",deleteMovieFromArray.bind(null,movieId1));
     const deleteCancel = document.querySelector("#delete-modal .btn--passive")
+    //deleteCancel.removeEventListener("click",function(){});
     deleteCancel.addEventListener("click",()=>{
         deleteConfim.classList.remove("visible"); 
     })
@@ -143,7 +146,7 @@ const collectUserInput = () => {
         return;
     }
     else if(+(input.value) <= 0 || +(input.value) >5){
-        //console.log(+input.value)
+        // console.log(+input.value)
         alert("Enter a valid number")
         return;
     }
